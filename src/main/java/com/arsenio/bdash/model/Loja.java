@@ -1,16 +1,10 @@
 package com.arsenio.bdash.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.SequenceGenerator;
-import javax.persistence.Table;
+import javax.persistence.*;
 import javax.xml.bind.annotation.XmlRootElement;
+import java.util.Objects;
 
 /**
- *
  * @author Gabriel Arsenio
  */
 @XmlRootElement
@@ -47,4 +41,112 @@ public class Loja {
 
     @Column(name = "uf", length = 2)
     private String uf;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public String getRazaoSocial() {
+        return razaoSocial;
+    }
+
+    public void setRazaoSocial(String razaoSocial) {
+        this.razaoSocial = razaoSocial;
+    }
+
+    public String getCnpj() {
+        return cnpj;
+    }
+
+    public void setCnpj(String cnpj) {
+        this.cnpj = cnpj;
+    }
+
+    public String getCep() {
+        return cep;
+    }
+
+    public void setCep(String cep) {
+        this.cep = cep;
+    }
+
+    public String getEndereco() {
+        return endereco;
+    }
+
+    public void setEndereco(String endereco) {
+        this.endereco = endereco;
+    }
+
+    public String getBairro() {
+        return bairro;
+    }
+
+    public void setBairro(String bairro) {
+        this.bairro = bairro;
+    }
+
+    public String getCidade() {
+        return cidade;
+    }
+
+    public void setCidade(String cidade) {
+        this.cidade = cidade;
+    }
+
+    public String getUf() {
+        return uf;
+    }
+
+    public void setUf(String uf) {
+        this.uf = uf;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Loja loja = (Loja) o;
+        return Objects.equals(id, loja.id) &&
+                Objects.equals(nome, loja.nome) &&
+                Objects.equals(razaoSocial, loja.razaoSocial) &&
+                Objects.equals(cnpj, loja.cnpj) &&
+                Objects.equals(cep, loja.cep) &&
+                Objects.equals(endereco, loja.endereco) &&
+                Objects.equals(bairro, loja.bairro) &&
+                Objects.equals(cidade, loja.cidade) &&
+                Objects.equals(uf, loja.uf);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, nome, razaoSocial, cnpj, cep, endereco, bairro, cidade, uf);
+    }
+
+    @Override
+    public String toString() {
+        return "Loja{" +
+                "id=" + id +
+                ", nome='" + nome + '\'' +
+                ", razaoSocial='" + razaoSocial + '\'' +
+                ", cnpj='" + cnpj + '\'' +
+                ", cep='" + cep + '\'' +
+                ", endereco='" + endereco + '\'' +
+                ", bairro='" + bairro + '\'' +
+                ", cidade='" + cidade + '\'' +
+                ", uf='" + uf + '\'' +
+                '}';
+    }
 }

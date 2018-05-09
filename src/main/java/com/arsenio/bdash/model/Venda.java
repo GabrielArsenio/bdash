@@ -1,22 +1,12 @@
 package com.arsenio.bdash.model;
 
+import javax.persistence.*;
+import javax.xml.bind.annotation.XmlRootElement;
 import java.math.BigDecimal;
 import java.sql.Date;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.SequenceGenerator;
-import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
-import javax.xml.bind.annotation.XmlRootElement;
+import java.util.Objects;
 
 /**
- *
  * @author Gabriel Arsenio
  */
 @XmlRootElement
@@ -43,4 +33,72 @@ public class Venda {
 
     @Column(name = "vlr_desconto", precision = 15, scale = 5)
     private BigDecimal valorDesconto;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Date getDataVenda() {
+        return dataVenda;
+    }
+
+    public void setDataVenda(Date dataVenda) {
+        this.dataVenda = dataVenda;
+    }
+
+    public Funcionario getFuncionario() {
+        return funcionario;
+    }
+
+    public void setFuncionario(Funcionario funcionario) {
+        this.funcionario = funcionario;
+    }
+
+    public BigDecimal getValorTotal() {
+        return valorTotal;
+    }
+
+    public void setValorTotal(BigDecimal valorTotal) {
+        this.valorTotal = valorTotal;
+    }
+
+    public BigDecimal getValorDesconto() {
+        return valorDesconto;
+    }
+
+    public void setValorDesconto(BigDecimal valorDesconto) {
+        this.valorDesconto = valorDesconto;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Venda venda = (Venda) o;
+        return Objects.equals(id, venda.id) &&
+                Objects.equals(dataVenda, venda.dataVenda) &&
+                Objects.equals(funcionario, venda.funcionario) &&
+                Objects.equals(valorTotal, venda.valorTotal) &&
+                Objects.equals(valorDesconto, venda.valorDesconto);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, dataVenda, funcionario, valorTotal, valorDesconto);
+    }
+
+    @Override
+    public String toString() {
+        return "Venda{" +
+                "id=" + id +
+                ", dataVenda=" + dataVenda +
+                ", funcionario=" + funcionario +
+                ", valorTotal=" + valorTotal +
+                ", valorDesconto=" + valorDesconto +
+                '}';
+    }
 }

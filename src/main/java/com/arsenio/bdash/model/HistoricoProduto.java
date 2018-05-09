@@ -1,22 +1,12 @@
 package com.arsenio.bdash.model;
 
+import javax.persistence.*;
+import javax.xml.bind.annotation.XmlRootElement;
 import java.math.BigDecimal;
 import java.sql.Date;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.SequenceGenerator;
-import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
-import javax.xml.bind.annotation.XmlRootElement;
+import java.util.Objects;
 
 /**
- *
  * @author Gabriel Arsenio
  */
 @XmlRootElement
@@ -43,4 +33,72 @@ public class HistoricoProduto {
 
     @Column(name = "quantidade", precision = 15, scale = 5)
     private BigDecimal quantidade;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Date getDataMovimentacao() {
+        return dataMovimentacao;
+    }
+
+    public void setDataMovimentacao(Date dataMovimentacao) {
+        this.dataMovimentacao = dataMovimentacao;
+    }
+
+    public Produto getProduto() {
+        return produto;
+    }
+
+    public void setProduto(Produto produto) {
+        this.produto = produto;
+    }
+
+    public String getAcao() {
+        return acao;
+    }
+
+    public void setAcao(String acao) {
+        this.acao = acao;
+    }
+
+    public BigDecimal getQuantidade() {
+        return quantidade;
+    }
+
+    public void setQuantidade(BigDecimal quantidade) {
+        this.quantidade = quantidade;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        HistoricoProduto that = (HistoricoProduto) o;
+        return Objects.equals(id, that.id) &&
+                Objects.equals(dataMovimentacao, that.dataMovimentacao) &&
+                Objects.equals(produto, that.produto) &&
+                Objects.equals(acao, that.acao) &&
+                Objects.equals(quantidade, that.quantidade);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, dataMovimentacao, produto, acao, quantidade);
+    }
+
+    @Override
+    public String toString() {
+        return "HistoricoProduto{" +
+                "id=" + id +
+                ", dataMovimentacao=" + dataMovimentacao +
+                ", produto=" + produto +
+                ", acao='" + acao + '\'' +
+                ", quantidade=" + quantidade +
+                '}';
+    }
 }
