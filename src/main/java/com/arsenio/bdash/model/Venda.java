@@ -3,7 +3,7 @@ package com.arsenio.bdash.model;
 import javax.persistence.*;
 import javax.xml.bind.annotation.XmlRootElement;
 import java.math.BigDecimal;
-import java.sql.Date;
+import java.util.Date;
 import java.util.Objects;
 
 /**
