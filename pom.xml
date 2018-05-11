@@ -31,7 +31,7 @@
     </dependencyManagement>
 
     <build>
-        <finalName>demo</finalName>
+        <finalName>bdash</finalName>
         <plugins>
             <plugin>
                 <groupId>org.wildfly.swarm</groupId>
@@ -60,7 +60,7 @@
         <!-- WildFly Swarm Fractions -->
         <dependency>
             <groupId>org.wildfly.swarm</groupId>
-            <artifactId>jaxrs-jaxb</artifactId>
+            <artifactId>web</artifactId>
         </dependency>
         <dependency>
             <groupId>org.postgresql</groupId>
