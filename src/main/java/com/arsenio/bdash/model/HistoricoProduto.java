@@ -13,7 +13,7 @@ import java.util.Objects;
 @Entity
 @Table(name = "historico_produtos")
 @SequenceGenerator(name = "historico_produtos_seq", allocationSize = 1)
-public class HistoricoProduto {
+public class HistoricoProduto implements Entidade {
 
     @Id
     @Column(name = "id_historico_produto")

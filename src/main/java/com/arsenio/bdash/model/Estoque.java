@@ -12,7 +12,7 @@ import java.util.Objects;
 @Entity
 @Table(name = "estoque")
 @SequenceGenerator(name = "estoque_seq", allocationSize = 1)
-public class Estoque {
+public class Estoque implements Entidade {
 
     @Id
     @Column(name = "id_estoque")

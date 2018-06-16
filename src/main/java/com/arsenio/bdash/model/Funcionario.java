@@ -11,7 +11,7 @@ import java.util.Objects;
 @Entity
 @Table(name = "funcionarios")
 @SequenceGenerator(name = "funcionarios_seq", allocationSize = 1)
-public class Funcionario {
+public class Funcionario implements Entidade {
 
     @Id
     @Column(name = "id_funcionario")

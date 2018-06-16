@@ -8,11 +8,10 @@ import java.util.Objects;
 /**
  * @author gabriel.silva
  */
-@XmlRootElement
 @Entity
 @Table(name = "produtos")
 @SequenceGenerator(name = "produtos_seq", allocationSize = 1)
-public class Produto {
+public class Produto implements Entidade {
 
     @Id
     @Column(name = "id_produto")
@@ -31,6 +30,7 @@ public class Produto {
     @Column(name = "vlr_venda", precision = 15, scale = 5)
     private BigDecimal valorVenda;
 
+    @Override
     public Long getId() {
         return id;
     }

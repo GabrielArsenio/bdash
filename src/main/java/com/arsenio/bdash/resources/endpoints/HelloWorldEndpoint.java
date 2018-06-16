@@ -1,4 +1,4 @@
-package com.arsenio.bdash.resources;
+package com.arsenio.bdash.resources.endpoints;
 
 import javax.ws.rs.Path;
 import javax.ws.rs.core.Response;
