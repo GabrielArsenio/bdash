@@ -29,6 +29,30 @@
                 templateUrl: '/views/produtos/form.html',
                 controller: 'ProdutoFormController',
                 controllerAs: 'vm'
-            });
+            })
+
+
+            .state({
+                name: 'funcionariosList',
+                url: '/funcionarios',
+                templateUrl: '/views/funcionarios/list.html',
+                controller: 'FuncionarioListController',
+                controllerAs: 'vm'
+            })
+            .state({
+                name: 'funcionariosNovo',
+                url: '/funcionarios/novo',
+                templateUrl: '/views/funcionarios/form.html',
+                controller: 'FuncionarioFormController',
+                controllerAs: 'vm'
+            })
+            .state({
+                name: 'funcionariosEditar',
+                url: '/funcionarios/{id}',
+                templateUrl: '/views/funcionarios/form.html',
+                controller: 'FuncionarioFormController',
+                controllerAs: 'vm'
+            })
+            ;
     }
 })();
