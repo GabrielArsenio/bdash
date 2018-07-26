@@ -41,6 +41,7 @@
         if ($stateParams.id) {
             VendaService.findById($stateParams.id)
                 .then(function (data) {
+                    console.log(data)
                     vm.registro = data;
                     vm.titulo = 'Editando Venda';
                 });

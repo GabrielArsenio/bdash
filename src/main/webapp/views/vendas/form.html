@@ -3,7 +3,7 @@
 </div>
 <form>
     <div class="form-row">
-        <div class="form-group col-md-1">
+        <div class="form-group col-md-2">
             <label for="id">Código</label>
             <input disabled type="number" ng-class="{'is-invalid': vm.error.id}" ng-model="vm.registro.id" class="form-control" id="id" ui-mask="99/99/9999">
             <small ng-if="vm.error.id" class="invalid-feedback">
@@ -14,7 +14,7 @@
     <div class="form-row">
         <div class="form-group col-md-6">
             <label for="loja">Loja</label>
-            <select ng-model="vm.registro.loja" ng-options="x.nome for x in vm.lojas" ng-class="{'is-invalid': vm.error.loja}" class="form-control" id="loja">
+            <select ng-model="vm.registro.loja" ng-options="x.nome for x in vm.lojas  track by x.id" ng-class="{'is-invalid': vm.error.loja}" class="form-control" id="loja">
             </select>
             <small ng-if="vm.error.loja" class="invalid-feedback">
                 {{vm.error.loja[1]}}
@@ -22,7 +22,7 @@
         </div>
         <div class="form-group col-md-6">
             <label for="funcionario">Vendedor</label>
-            <select ng-model="vm.registro.funcionario" ng-options="x.nome for x in vm.funcionarios" ng-class="{'is-invalid': vm.error.funcionario}" class="form-control" id="funcionario">
+            <select ng-model="vm.registro.funcionario" ng-options="x.nome for x in vm.funcionarios  track by x.id" ng-class="{'is-invalid': vm.error.funcionario}" class="form-control" id="funcionario">
             </select>
             <small ng-if="vm.error.funcionario" class="invalid-feedback">
                 {{vm.error.funcionario[1]}}
@@ -41,9 +41,9 @@
         </thead>
         <tbody>
             <tr ng-repeat="item in vm.registro.itens">
-                <th scope="row">{{item.sequencia}}</th>
+                <th scope="row">{{$index + 1}}</th>
                 <td>
-                    <select ng-model="vm.registro.itens[$index].produto" ng-options="x.nome for x in vm.produtos" ng-class="{'is-invalid': vm.error.produto}" class="form-control" id="produto">
+                    <select ng-model="vm.registro.itens[$index].produto" ng-options="x.nome for x in vm.produtos track by x.id" ng-class="{'is-invalid': vm.error.produto}" class="form-control" id="produto">
                     </select>
                 </td>
                 <td class="text-right">
