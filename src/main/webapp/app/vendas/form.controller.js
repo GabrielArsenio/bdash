@@ -4,9 +4,9 @@
     angular.module('app')
         .controller('VendaFormController', VendaFormController);
 
-    VendaFormController.$inject = ['VendaService', '$state', '$stateParams', 'DialogBuilder', 'LojaService', 'FuncionarioService'];
+    VendaFormController.$inject = ['VendaService', '$state', '$stateParams', 'DialogBuilder', 'LojaService', 'FuncionarioService', 'ProdutoService'];
 
-    function VendaFormController(VendaService, $state, $stateParams, DialogBuilder, LojaService, FuncionarioService) {
+    function VendaFormController(VendaService, $state, $stateParams, DialogBuilder, LojaService, FuncionarioService, ProdutoService) {
         var vm = this;
         vm.registro = {
             dataVenda: new Date(),
@@ -27,6 +27,13 @@
         vm.funcionarios = [];
         vm.funcionariosFiltro = '';
         vm.funcionariosPage = {
+            number: 1,
+            size: '999'
+        }
+
+        vm.produtos = [];
+        vm.produtosFiltro = '';
+        vm.produtosPage = {
             number: 1,
             size: '999'
         }
@@ -57,12 +64,33 @@
                 });
         }
 
+        if (!vm.produtos.length) {
+            ProdutoService.findAll(vm.produtosFiltro, vm.produtosPage)
+                .then(function (dados) {
+                    for (let registro of dados.registros) {
+                        vm.produtos.push(registro)
+                    }
+                });
+        }
+
         vm.excluirItem = (item) => {
             var index = vm.registro.itens.indexOf(item);
             if (index > -1) {
                 vm.registro.itens.splice(index, 1);
             }
+
+            if (!vm.registro.itens.length) {
+                vm.adicionarItem();
+            }
         };
+
+        vm.adicionarItem = () => {
+            vm.registro.itens.push({});
+        };
+
+        if (!vm.registro.itens.length) {
+            vm.adicionarItem();
+        }
 
         function salvar() {
             if (!vm.registro.id) {

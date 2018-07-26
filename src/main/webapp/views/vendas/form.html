@@ -32,24 +32,31 @@
 
     <table class="table">
         <thead>
-          <tr>
-            <th scope="col">#</th>
-            <th scope="col">Nome</th>
-            <th scope="col"></th>
-          </tr>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Nome</th>
+                <th scope="col"></th>
+                <th scope="col"></th>
+            </tr>
         </thead>
         <tbody>
-          <tr ng-repeat="item in vm.registro.itens">
-            <th scope="row">{{item.sequencia}}</th>
-            <td>{{item.nome}}</td>
-            <td class="text-right">
+            <tr ng-repeat="item in vm.registro.itens">
+                <th scope="row">{{item.sequencia}}</th>
+                <td>
+                    <select ng-model="vm.registro.itens[$index].produto" ng-options="x.nome for x in vm.produtos" ng-class="{'is-invalid': vm.error.produto}" class="form-control" id="produto">
+                    </select>
+                </td>
+                <td class="text-right">
                     <button ng-click="vm.excluirItem(item)" class="btn btn-sm btn-link text-danger py-0">
                         <span class="feather icon-trash-2"></span>
                     </button>
                 </td>
-          </tr>
+                <td>
+                    <button ng-if="$index === vm.registro.itens.length - 1" type="button" ng-click="vm.adicionarItem()" class="btn pull-right">Novo Item</button>
+                </td>
+            </tr>
         </tbody>
-      </table>
+    </table>
 
     <button type="button" ng-click="vm.salvar()" class="btn btn-primary">Salvar</button>
     <a ui-sref="vendasList" class="btn btn-danger">Cancelar</button>
