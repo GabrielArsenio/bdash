@@ -75,6 +75,28 @@
                 controller: 'LojaFormController',
                 controllerAs: 'vm'
             })
+
+            .state({
+                name: 'vendasList',
+                url: '/vendas',
+                templateUrl: '/views/vendas/list.html',
+                controller: 'VendaListController',
+                controllerAs: 'vm'
+            })
+            .state({
+                name: 'vendasNovo',
+                url: '/vendas/novo',
+                templateUrl: '/views/vendas/form.html',
+                controller: 'VendaFormController',
+                controllerAs: 'vm'
+            })
+            .state({
+                name: 'vendasEditar',
+                url: '/vendas/{id}',
+                templateUrl: '/views/vendas/form.html',
+                controller: 'VendaFormController',
+                controllerAs: 'vm'
+            })
             ;
     }
 })();
