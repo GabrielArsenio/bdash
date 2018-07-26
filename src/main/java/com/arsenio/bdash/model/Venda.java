@@ -4,6 +4,7 @@ import javax.persistence.*;
 import javax.xml.bind.annotation.XmlRootElement;
 import java.math.BigDecimal;
 import java.util.Date;
+import java.util.List;
 import java.util.Objects;
 
 /**
@@ -28,12 +29,21 @@ public class Venda implements Entidade {
     @JoinColumn(name = "id_funcionario")
     private Funcionario funcionario;
 
+    @ManyToOne
+    @JoinColumn(name = "id_loja")
+    private Loja loja;
+
     @Column(name = "vlr_total", precision = 15, scale = 5)
     private BigDecimal valorTotal;
 
     @Column(name = "vlr_desconto", precision = 15, scale = 5)
     private BigDecimal valorDesconto;
 
+    @JoinColumn(name = "id_venda")
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    private List<ItemVenda> itens;
+
+    @Override
     public Long getId() {
         return id;
     }
@@ -58,6 +68,14 @@ public class Venda implements Entidade {
         this.funcionario = funcionario;
     }
 
+    public Loja getLoja() {
+        return loja;
+    }
+
+    public void setLoja(Loja loja) {
+        this.loja = loja;
+    }
+
     public BigDecimal getValorTotal() {
         return valorTotal;
     }
@@ -74,6 +92,14 @@ public class Venda implements Entidade {
         this.valorDesconto = valorDesconto;
     }
 
+    public List<ItemVenda> getItens() {
+        return itens;
+    }
+
+    public void setItens(List<ItemVenda> itens) {
+        this.itens = itens;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -82,13 +108,16 @@ public class Venda implements Entidade {
         return Objects.equals(id, venda.id) &&
                 Objects.equals(dataVenda, venda.dataVenda) &&
                 Objects.equals(funcionario, venda.funcionario) &&
+                Objects.equals(loja, venda.loja) &&
                 Objects.equals(valorTotal, venda.valorTotal) &&
-                Objects.equals(valorDesconto, venda.valorDesconto);
+                Objects.equals(valorDesconto, venda.valorDesconto) &&
+                Objects.equals(itens, venda.itens);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, dataVenda, funcionario, valorTotal, valorDesconto);
+
+        return Objects.hash(id, dataVenda, funcionario, loja, valorTotal, valorDesconto, itens);
     }
 
     @Override
@@ -97,8 +126,10 @@ public class Venda implements Entidade {
                 "id=" + id +
                 ", dataVenda=" + dataVenda +
                 ", funcionario=" + funcionario +
+                ", loja=" + loja +
                 ", valorTotal=" + valorTotal +
                 ", valorDesconto=" + valorDesconto +
+                ", itens=" + itens +
                 '}';
     }
 }
