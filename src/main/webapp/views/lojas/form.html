@@ -1,0 +1,40 @@
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3">
+    <h1 class="h2">{{vm.titulo}}</h1>
+</div>
+<form>
+    <div class="form-row">
+        <div class="form-group col-md-1">
+            <label for="id">Código</label>
+            <input disabled type="number" ng-class="{'is-invalid': vm.error.id}" ng-model="vm.registro.id" class="form-control" id="id">
+            <small ng-if="vm.error.id" class="invalid-feedback">
+                {{vm.error.id[1]}}
+            </small>
+        </div>
+        <div class="form-group col-md-3">
+            <label for="cnpj">CNPJ</label>
+            <input type="text" ng-class="{'is-invalid': vm.error.cnpj}" ng-model="vm.registro.cnpj" class="form-control" id="cnpj">
+            <small ng-if="vm.error.cnpj" class="invalid-feedback">
+                {{vm.error.cnpj[1]}}
+            </small>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label for="nome">Nome</label>
+            <input type="text" ng-class="{'is-invalid': vm.error.nome}" ng-model="vm.registro.nome" class="form-control" id="nome" placeholder="Digite o nome da loja">
+            <small ng-if="vm.error.nome" class="invalid-feedback">
+                {{vm.error.nome[1]}}
+            </small>
+        </div>
+        <div class="form-group col-md-6">
+            <label for="razaoSocial">Razão social</label>
+            <input type="text" ng-class="{'is-invalid': vm.error.razaoSocial}" ng-model="vm.registro.razaoSocial" class="form-control" id="razaoSocial" placeholder="Digite o razão social da loja">
+            <small ng-if="vm.error.razaoSocial" class="invalid-feedback">
+                {{vm.error.razaoSocial[1]}}
+            </small>
+        </div>
+    </div>
+
+    <button type="button" ng-click="vm.salvar()" class="btn btn-primary">Salvar</button>
+    <a ui-sref="lojasList" class="btn btn-danger">Cancelar</button>
+</form>

@@ -53,6 +53,28 @@
                 controller: 'FuncionarioFormController',
                 controllerAs: 'vm'
             })
+
+            .state({
+                name: 'lojasList',
+                url: '/lojas',
+                templateUrl: '/views/lojas/list.html',
+                controller: 'LojaListController',
+                controllerAs: 'vm'
+            })
+            .state({
+                name: 'lojasNovo',
+                url: '/lojas/novo',
+                templateUrl: '/views/lojas/form.html',
+                controller: 'LojaFormController',
+                controllerAs: 'vm'
+            })
+            .state({
+                name: 'lojasEditar',
+                url: '/lojas/{id}',
+                templateUrl: '/views/lojas/form.html',
+                controller: 'LojaFormController',
+                controllerAs: 'vm'
+            })
             ;
     }
 })();
